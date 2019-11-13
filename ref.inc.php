@@ -52,7 +52,7 @@ define('PLUGIN_REF_DIRECT_ACCESS', FALSE); // FALSE or TRUE
 // - ブラウザによってはインラインイメージの表示や、「インライン
 //   イメージだけを表示」させた時などに不具合が出る場合があります
 
-// 遅延読込・画像リサイズ対応
+// 画像遅延読み込み・画像リサイズ対応
 // resize_imageを画像表示に利用する場合はTRUEに設定
 define('PLUGIN_REF_RESIZE_IMAGE', TRUE);
 
