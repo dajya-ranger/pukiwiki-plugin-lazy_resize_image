@@ -1,5 +1,5 @@
 # pukiwiki-plugin-lazy_resize_image
-PukiWiki用遅延読込・画像リサイズ対応プラグイン
+PukiWiki用画像遅延読み込み・画像リサイズ対応プラグイン
 
 - 暫定公開版です（[PukiWiki1.5.2](https://pukiwiki.osdn.jp/?PukiWiki/Download/1.5.2)で動作確認済）
 - 本プラグインは次のファイルで構成されています

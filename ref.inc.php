@@ -12,7 +12,7 @@
 /**
  * 修正情報
  *
- * PukiWiki ref.inc.php 遅延読込・画像リサイズ対応プラグイン
+ * PukiWiki ref.inc.php 画像遅延読み込み・画像リサイズ対応プラグイン
  *
  * @author		オヤジ戦隊ダジャレンジャー <red@dajya-ranger.com>
  * @copyright	Copyright © 2019, dajya-ranger.com
