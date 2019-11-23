@@ -21,7 +21,7 @@
 define('PLUGIN_RESIZE_IMAGE_WIDTH', '');
 // 画像高さ初期値（未設定でオリジナルサイズ）
 define('PLUGIN_RESIZE_IMAGE_HEIGHT', '');
-// 画像品質初期値（JPEG 70％）
+// 画像品質初期値（JPEG品質値70）
 define('PLUGIN_RESIZE_IMAGE_QUALITY', '70');
 // リサイズ画像キャッシュディレクトリ
 define('PLUGIN_RESIZE_IMAGE_CACHE', DATA_HOME . 'resize_cache/');
