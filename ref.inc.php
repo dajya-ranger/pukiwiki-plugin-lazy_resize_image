@@ -19,7 +19,8 @@
  * @link		https://dajya-ranger.com/pukiwiki/lazy-resize-image-plugin/
  * @example		@linkの内容を参照
  * @license		Apache License 2.0
- * @version		0.2.0
+ * @version		0.3.0
+ * @since 		0.3.0 2020/04/29 FacebookのOGP仕様変更によりURL短縮ライブラリ関数の呼び出しを追加
  * @since 		0.2.0 2019/11/13 暫定初公開（独自拡張）
  *
  */
@@ -281,8 +282,27 @@ function plugin_ref_body($args)
 		// Count downloads with attach plugin
 		$url = $script . '?plugin=attach' . '&amp;refer=' . rawurlencode($page) .
 			'&amp;openfile=' . rawurlencode($name); // Show its filename at the last
+		// ----------------------------------------------------------------
+		// URL短縮ライブラリ関数からページ名を設定するように修正 2020/04/29
+		// ----------------------------------------------------------------
+		/*
 		$resize_url = $script . '?plugin=resize_image' . '&amp;page=' . rawurlencode($page) .
 			'&amp;image=' . rawurlencode($name); // Show its filename at the last
+		*/
+		// ----------------------------------------------------------------
+		$short_page = substr(get_short_url_from_pagename($page), 1);
+		if ($short_page == '') {
+			// 短縮ページ名がURL短縮ライブラリで設定されない場合はデフォルトページ名が設定されている
+			$resize_url = $script . '?plugin=resize_image' . '&amp;page=' . rawurlencode($page);
+		} else {
+			// それ以外の場合は短縮ページ名を設定する
+			$resize_url = $script . '?plugin=resize_image' . '&amp;page=' . $short_page;
+		}
+		// ----------------------------------------------------------------
+		// Show its filename at the last
+		//$resize_url = $resize_url . '&amp;image=' . rawurlencode($name); 
+		$resize_url .= '&amp;image=' . rawurlencode($name); 
+
 		if ($is_image) {
 			// Swap $url
 			$url2 = $url;

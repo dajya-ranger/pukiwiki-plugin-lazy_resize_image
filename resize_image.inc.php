@@ -6,12 +6,13 @@
  * 画像リサイズプラグイン
  *
  * @author		オヤジ戦隊ダジャレンジャー <red@dajya-ranger.com>
- * @copyright	Copyright © 2019, dajya-ranger.com
+ * @copyright	Copyright © 2019-2020, dajya-ranger.com
  * @link		https://dajya-ranger.com/pukiwiki/lazy-resize-image-plugin/
  * @example		&resize_image(画像ファイル名,[幅,[高さ,[画像品質,[アスペクト比維持＝TRUE]]]]);
  * @example		@linkの内容を参照
  * @license		Apache License 2.0
- * @version		0.2.0
+ * @version		0.3.0
+ * @since 		0.3.0 2020/04/29 FacebookのOGP仕様変更によりURL短縮ライブラリ関数の呼び出しを追加
  * @since 		0.2.0 2019/11/13 暫定初公開（独自拡張）
  * @since 		1.21  2007/11/21 resizeimage.inc.php ioio氏（元プログラム）
  *
@@ -56,7 +57,13 @@ function plugin_resize_image_inline() {
 	 }
 
 	// 出力用に整形
-	$page = '&amp;page=' . rawurlencode($page);
+	// ----------------------------------------------------------------
+	// URL短縮ライブラリ関数からページ名を設定するように修正 2020/04/29
+	// ----------------------------------------------------------------
+	//$page = '&amp;page=' . rawurlencode($page);
+	// ----------------------------------------------------------------
+	$page = '&amp;page=' . substr(get_short_url_from_pagename($page), 1);
+	// ----------------------------------------------------------------
 	$file = '&amp;image=' . rawurlencode($file);
 	$width = isset($args[0]) ? array_shift($args) : '';
 	$width = ($width === '') ? '' : '&amp;w=' . $width;
@@ -74,7 +81,13 @@ function plugin_resize_image_inline() {
 function plugin_resize_image_action() {
 	global $vars;
 
-	$page = isset($vars['page']) ? $vars['page'] : '';
+	// --------------------------------------------------------------
+	// URL短縮ページ名から元のページ名を取得するように修正 2020/04/29
+	// --------------------------------------------------------------
+	//$page = isset($vars['page']) ? $vars['page'] : '';
+	// --------------------------------------------------------------
+	$page = isset($vars['page']) ? get_pagename_from_short_url($vars['page']) : '';
+	// --------------------------------------------------------------
 	$file = isset($vars['image']) ? $vars['image'] : '';
 	$width = isset($vars['w']) ? $vars['w'] : (isset($vars['width']) ? $vars['width'] : PLUGIN_RESIZE_IMAGE_WIDTH);
 	$height = isset($vars['h']) ? $vars['h'] : (isset($vars['height']) ? $vars['height'] : PLUGIN_RESIZE_IMAGE_HEIGHT);

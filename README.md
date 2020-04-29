@@ -20,3 +20,8 @@ PukiWiki用画像遅延読み込み・画像リサイズプラグイン
 - resize_imageプラグインを単体のインライン・プラグインとして利用することも可能です
 - refプラグインの設定を変更することで、resize_imageプラグインを利用せずに画像遅延読み込みだけを利用することも可能です
 - 設置と設定に関しては自サイトの記事「[PukiWikiに画像遅延読込・画像リサイズプラグインを導入して画像の読み込みを高速化する！](https://dajya-ranger.com/pukiwiki/lazy-resize-image/)」を参照して下さい
+- Ver0.2.0からの変更点（FacebookのOGP仕様変更対応）は次の通り
+	- refプラグインで出力する画像ページ名部分を[URL短縮ライブラリ](https://dajya-ranger.com/sdm_downloads/short-url-library/)に対応
+	- resize_imageプラグインで入出力する画像ページ名部分を[URL短縮ライブラリ](https://dajya-ranger.com/sdm_downloads/short-url-library/)に対応
+	- 最新のlazysizes.min.js（v5.2.0）を収録
+	- [URL短縮ライブラリ](https://dajya-ranger.com/sdm_downloads/short-url-library/)を利用しない場合は旧バージョンのVer0.2.0をお使い下さい
